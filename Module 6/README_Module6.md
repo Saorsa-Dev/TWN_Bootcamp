@@ -1,1 +1,62 @@
+# Module 6
+
+Module 6 is about Artifact Repository Managers with a focus on Nexus.
+
+An Artifact Repository provides a central location for build artifacts. Applications are delivered as a single file in different artifact formats and stored in an artifact repository that supports different artifact types. There are public and private repository managers. Nexus is a private central store, with open source and commercial versions. Can have multiple repositories divided into formats or teams. Thinking to my own company, I think Nexus would be a good fit for our Exposure Analyst team to store their numerous Python libraries which they want to use with the Databricks platform. Nexus has great features for storing/caching packages and advanced security scanning tools to ensure all libraries are safe to use.
+
+Breakdown of exercise completed for this module:
+- Created a sizeable Ubuntu droplet with enough resources to support Nexus
+- Configured firewall rules for port 8081 to access Nexus from browser
+- Installed Java
+- Downloaded/installed Nexus
+- Created Nexus user/group
+- Run application on droplet and connected from local machine
+- Published Java Maven and Gradle applications to Nexus
+
+###  Gradle app syntax for referencing Nexus:
+
+  apply plugin: 'maven-publish'
+
+publishing {
+    publications {
+        create("maven", MavenPublication) {
+            artifact("build/libs/my-app-$version" + ".jar") {
+                extension 'jar'
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name 'nexus'
+            url "http://159.65.53.122:8081/repository/maven-snapshots/"
+            allowInsecureProtocol = true
+            credentials {
+                username project.repoUser
+                password project.repoPassword
+            }
+        }
+    }
+}
+
+Maven app syntax for referencing Nexus:
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.15.0</version>
+                <configuration>
+                    <source>25</source>
+                    <target>25</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <url>http://159.65.53.122:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
