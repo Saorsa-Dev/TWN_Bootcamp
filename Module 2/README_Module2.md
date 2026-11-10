@@ -70,6 +70,28 @@ Don't run services using root! Run them with service account users - best practi
 5. su = login as root
 6. sudo groupadd <groupname> = create new group
 7. sudo usermod [OPTIONS] <username> = Modify user account, e.g sudo usermod -g devops tom (changes the primary group of tom to devops)
-8. 
+8.sudo chown <username> <filename> = Change user ownership
+9. sudo chown <username>:<groupname> <filename> = Change user/group ownership
+10. sudo chgrp <username> <filename> = Change group ownership
+11. r read / w write / x execute / - none -- characters represent file/folder permissions
+12. sudo chmod -x api = remove execute permissions on api folder
+13. sudo chmod g-w <filename> = remove write (w) permission from group (g) on file
+14. sudo chmod g+x <filename> = add execute (x) permission to group (g) on file
+15. sudo chmod u+x <filename> = add execute permissions to user (u) on file
+16. sudo chmod o+x <filename> = add execute permissions to other (o) users on file
+17. sudo chmod a-x <filename> = remove execute permissions to all (a) users on file
+18. sudo chmod g=rwx <filename> = add read/write/execute permissions to group on filename
+
+### Demo 6: Pipes & Redirects 
+
+Every program has the concept of input/output. Output of one program/command can become the input of another program/command, using the | (pipe) command -- called "piping"
+
+1. cat /var/log/syslog | less = send contents of the syslog directory to the less program
+2. history | less
+3. history | grep sudo = globally search the results of hoitory for regular expression (grep) in the word sudo and print out result
+4. history | grep sudo | less = piping can keep going between programs
+5. ls /usr/bin | grep java = search for app called java in the /usr/bin directory
+6. 
+
 ### Demo 3 - Package Manage - Installing Software on Linux
 
