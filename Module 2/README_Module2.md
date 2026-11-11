@@ -91,7 +91,55 @@ Every program has the concept of input/output. Output of one program/command can
 3. history | grep sudo = globally search the results of hoitory for regular expression (grep) in the word sudo and print out result
 4. history | grep sudo | less = piping can keep going between programs
 5. ls /usr/bin | grep java = search for app called java in the /usr/bin directory
-6. 
+6. Redirects - redirect results of command execution into a file, for example, using the greater than symbol: history | grep sudo > sudo-commands.txt
+7. Use >> syntax to append existing file, not overwrite which is the default with >
+8. Useful use case: collecting logs of program printing to command line, can send to file to store/share for later analysis
+9. Every program has 3 built-in streams: STDIN (0); STDOUT (1); STDERR (2)
 
-### Demo 3 - Package Manage - Installing Software on Linux
+### Demo 7: Shell Scripting Part 1 - Intro to Shell Scripting
+
+Shell scripts have file extension .sh. Shell is a program that interprets and executes the various commands that we type in the terminal and translates them so the OS kernel can understand them.
+
+1. sh (Bourne Shell) - /bin/sh
+2. Bash (Bourne again shell) - /bin/bash - improved version of sh, default shell program for most Unix systems
+3. Bash is both a shell program and scripting language - bash and shell used interchangeably
+4. Shebang - file header is #!/bin/bash (location of required shell - needs to be installed to work) -- shebang shortened for sharp-bang
+5. To execute the script, the syntax is ./setup.sh (must have execute permission on file)
+
+### Demo 8: Shell Scripting Part 2 - Basic Concepts & Syntax
+
+1. variable_name=value = Assigns value to  variable
+2. Refer to variable like so: echo "using file $file_name to configure something"
+3. config_files=$(ls config) -- storing output of other commands as variables
+4. Use of Conditionals to alter control flow/handle different conditions/results, e.g. execute program only if condition is true. Referred to as if-then-else statements:
+   if [ -d "config" ]
+   then
+      echo "reading config directory contents"
+      config_files =$(ls config)
+   else
+      echo "config dir not found. Creating one..."
+      mkdir config
+   fi
+5. Passing parameters/ arguments to a script, e.g. ./setup.sh setup-scripts admin -- where admin is a parameter value accepted by the script
+6. Reading user input in script, e.g.
+   read -p "Please enter password: " user-pwd (-p = prompt)
+   echo "Thanks for providing your password, $user_pwd"
+7. $* -- represents all variables as a single string
+8. $# -- total number of variables
+9. Shell loops -- use whenever you are working with a list of items, called a for loop. Operates on a list of items, repeats set of commands for every item in list. E.g.
+   for param in $*
+      do
+         echo $param
+      done
+10. While loop - executes set of commands repeatedly until condition is met (need a break command to exit loop or will run forever)
+    while condition
+    do
+       statement(s) to be executed while command is true
+    done
+
+### Demo 9 - Shell Scripting Part 3 -  Basic Concepts & Syntax
+
+
+
+
 
