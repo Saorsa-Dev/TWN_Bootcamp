@@ -154,6 +154,52 @@ Shell scripts have file extension .sh. Shell is a program that interprets and ex
 7. Functions can return value, using keyword return
 8. $? - captures value returned by last command
 
+### Demo 10 - Environment Variables
 
+1. Supports multi-user environments, allowing preferences to be set per user
+2. This info is stored in environment variables
+3. By default variable names set in UPPER CASE
+4. They are set by the operating system but are dynamic values that can be changed
+5. Command to list environment variables: printenv
+6. Can set default shell program, home user directory, etc
+7. Benefit of creating your own environment variables: e.g. running app that needs to connect to DB, can set login credentials in env variables (more secure than storing in code)
+8. Create an environment variable with following syntax: export DB_USERNAME=dbuser -- can find this by typing printenv | grep DB
+9. Remove environment variable using: unset DB_NAME
+10. The above creates session-specific env variables
+11. To create env variables that will survive across sessions, we can set these in shell specific rc files, e.g. .bashrc file - use export command in the file
+12. Must then reload the system so it knows about the new env variables, using source .bashrc
+13. The above creates user-specific env variables - you can also set system wide env variables
+14. File to edit is stored in /etc/environment - will already contain the PATH Env Variable: a list of directories with binary files within them, separated by :
+15. Can add new variable for your own app by appending PATH:$PATH:/home/neile for user specific env variable
+16. This will allow your app commands to be recognized from anywhere in the file system at your command line
+
+### Demo 11 - SSH - Secure Shell
+
+SSH stands for secure shell - accessible over the internet so intent is to keep connection secure. Also refers to the utilities to implement the protocol.
+
+1. 2 ways to authenticate: Username & Password ; SSH Key Pair (more secure)
+2. For SSH key, client creates SSH Key Pair - private & public key
+3. Port 22 must be open using a firewall rule
+4. Should be restricted to certain IP addresses (whitelisting)
+5. Created a droplet in DigitalOcean along with Nana
+   - Choose small server
+   - Set root password
+   - Rename server
+   - Copy public IP of server
+   - From local command line, use ssh root@PublicIPofDroplet
+   - Enter root password - now connected to remote server
+   - Generate SSH key pair:
+   - Locate ssh folder locally, ls .ssh/
+   - ssh-keygen -t rsa
+   - Accept default location for file
+   - Choose no passphrase
+   - Private and public key generated in folder
+   - ls .ssh
+   - cat .ssh/authorized_keys
+   - cat .ssh/id_rsa.pub
+   - Copy into remote servers authorized key file
+   - Reconnect to host - will not prompty for password because the private key was used to authenticate
+   - Used scp (secure copy) to copy a local file to remote server to execute there, e.g. scp test.sh root@publicIP:/root
+   - Connect to server, locate file, grant execute permissions and run
 
 
