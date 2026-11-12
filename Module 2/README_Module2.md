@@ -139,6 +139,20 @@ Shell scripts have file extension .sh. Shell is a program that interprets and ex
 
 ### Demo 9 - Shell Scripting Part 3 -  Basic Concepts & Syntax
 
+1. Use functions to reuse more complex logic in your code
+   function <name> () {
+      list of commands
+   }
+2. Must call the function to use them
+3. You can accept parameters in functions using $1, $2 etc., which you can assign to variables in the function
+4. Can comment out lines in your shell script using # symbol - good to describe what your code is doing with comments
+5. Best practices with functions:
+   - Don't use too many parameters
+   - Apply Single Responsibility Principle: function should do just one thing
+   - Declare variables with a meaningful name for positional parameters within your function
+6. Booleans - a data type that can have only two values, true or false. True or false are keywords in Bash and will recognized as boolean values
+7. Functions can return value, using keyword return
+8. $? - captures value returned by last command
 
 
 
