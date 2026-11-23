@@ -42,7 +42,10 @@ Build tools used in this module: Gradle & Maven (Jave) / npm (JavaScript)
 - Package.json for dependencies
 - Package manager installs dependencies but not used for transpiling code
 - WORTH NOTING: .zip and .tar file contain application code but NOT dependencies
-- JavaScript more flexible/less standardized than Java - can used different languages for frontend/backend, or the same, e.g. React.js (frontend), Node.js (backend) 
+- JavaScript more flexible/less standardized than Java - can used different languages for frontend/backend, or the same, e.g. React.js (frontend), Node.js (backend)
+- npm repository stores JavaScript modules
+- npm pack commands creates the tar/zip file with app code (not dependencies)
+- 
 
 ### Pattern in all these tools:
 - Dependency file
@@ -56,7 +59,24 @@ Build tools used in this module: Gradle & Maven (Jave) / npm (JavaScript)
 - No need to install dependencies on server! Execute install command inside Docker image
 - Simplifies things! But still need to build your app
 
+## Demo - Install Maven and Gradle projects
+- Installed IntelliJ on Windows
+- Installed Git
+- Cloned java maven app -- https://gitlab.com/twn-devops-bootcamp/latest/04-build-tools/java-maven-app
+- Installed Java SDK 25 (pre-req for Maven)
+- Ran Maven application
+- Changed Terminal settings to run cmd.exe (not PowerShell)
+- Added Java bin folder to PATH
+- Added JAVA_HOME variable to env vars
+- Downloaded Maven
+- Added Maven bin folder to PATH
+- Downloaded Gradle
+- Added Gradle bin to PATH
+- Configured IntelliJ to Local Installation distribution and point to Gradle folder
+- Cloned java gradle app -- https://gitlab.com/twn-devops-bootcamp/latest/04-build-tools/java-app
+- Built the Gradle app using gradle build
+- Cloned react nodejs example project -- https://github.com/techworld-with-nana/react-nodejs-example
+- Manually install dependencies using npm -- download node, run npm install from api directory
 
 
-- 
   
